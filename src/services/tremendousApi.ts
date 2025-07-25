@@ -1,7 +1,5 @@
 import { TremendousResponse, TremendousError } from '@/types/reward';
 
-// CORS proxy for testing only - NOT for production use
-const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
 const API_BASE_URL = 'https://api.tremendous.com/api/v2';
 const API_KEY = 'TEST_1LdZjYD9BpUEPTyFPFMWW8aQcbXF7xDK'; // Static API key as provided
 const FUNDING_SOURCE_ID = '5NJ0STL48TM1';
@@ -15,7 +13,7 @@ export interface SendRewardRequest {
 }
 
 export const sendReward = async (request: SendRewardRequest): Promise<TremendousResponse> => {
-  const response = await fetch(`${CORS_PROXY}${API_BASE_URL}/orders`, {
+  const response = await fetch(`${API_BASE_URL}/orders`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${API_KEY}`,
